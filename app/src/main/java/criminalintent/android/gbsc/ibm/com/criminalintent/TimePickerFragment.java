@@ -57,13 +57,15 @@ public class TimePickerFragment extends DialogFragment{
 
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_time, null);
         TimePicker timePicker = (TimePicker) v.findViewById(R.id.dialog_date_timePicker);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            timePicker.setHour(hourOfDay);
-            timePicker.setMinute(minute);
-        } else {
-            timePicker.setCurrentHour(hourOfDay);
-            timePicker.setCurrentMinute(minute);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            timePicker.setHour(hourOfDay);
+//            timePicker.setMinute(minute);
+//        } else {
+//            timePicker.setCurrentHour(hourOfDay);
+//            timePicker.setCurrentMinute(minute);
+//        }
+        timePicker.setCurrentHour(hourOfDay);
+        timePicker.setCurrentMinute(minute);
 
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
