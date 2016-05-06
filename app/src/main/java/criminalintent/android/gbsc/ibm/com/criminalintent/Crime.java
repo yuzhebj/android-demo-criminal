@@ -1,5 +1,6 @@
 package criminalintent.android.gbsc.ibm.com.criminalintent;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -39,8 +40,26 @@ public class Crime {
         return mDate;
     }
 
-    public void setDate(Date mDate) {
-        this.mDate = mDate;
+    public void setDate(Date newDate) {
+        Calendar newTmpDate = Calendar.getInstance();
+        newTmpDate.setTime(newDate);
+        Calendar tmpDate = Calendar.getInstance();
+        tmpDate.setTime(mDate);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(newTmpDate.get(Calendar.YEAR), newTmpDate.get(Calendar.MONTH), newTmpDate.get(Calendar.DAY_OF_MONTH),
+                tmpDate.get(Calendar.HOUR_OF_DAY), tmpDate.get(Calendar.MINUTE), tmpDate.get(Calendar.SECOND));
+        this.mDate = calendar.getTime();
+    }
+
+    public void setTime(Date newDate) {
+        Calendar newTmpDate = Calendar.getInstance();
+        newTmpDate.setTime(newDate);
+        Calendar tmpDate = Calendar.getInstance();
+        tmpDate.setTime(mDate);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(tmpDate.get(Calendar.YEAR), tmpDate.get(Calendar.MONTH), tmpDate.get(Calendar.DAY_OF_MONTH),
+                newTmpDate.get(Calendar.HOUR_OF_DAY), newTmpDate.get(Calendar.MINUTE), newTmpDate.get(Calendar.SECOND));
+        this.mDate = calendar.getTime();
     }
 
     public boolean isSolved() {

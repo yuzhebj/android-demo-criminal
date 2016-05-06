@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.DatePicker;
 
@@ -35,7 +34,7 @@ public class DatePickerFragment extends DialogFragment {
     }
 
     private void sendResult(int resultCode) {
-        if(getTargetFragment() == null) {
+        if (getTargetFragment() == null) {
             return;
         }
         Intent i = new Intent();
