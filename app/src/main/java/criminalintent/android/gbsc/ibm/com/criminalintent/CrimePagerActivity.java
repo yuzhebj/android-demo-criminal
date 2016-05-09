@@ -2,10 +2,10 @@ package criminalintent.android.gbsc.ibm.com.criminalintent;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -13,7 +13,7 @@ import java.util.UUID;
 /**
  * Created by yuzhe on 3/21/2016.
  */
-public class CrimePagerActivity extends FragmentActivity{
+public class CrimePagerActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private ArrayList<Crime> mCrimes;
@@ -50,7 +50,7 @@ public class CrimePagerActivity extends FragmentActivity{
             @Override
             public void onPageSelected(int position) {
                 Crime crime = mCrimes.get(position);
-                if(crime.getTitle() != null) {
+                if (crime.getTitle() != null) {
                     setTitle(crime.getTitle());
                 }
             }
@@ -61,9 +61,9 @@ public class CrimePagerActivity extends FragmentActivity{
             }
         });
 
-        UUID crimeId = (UUID)getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
-        for(int i=0 ; i<mCrimes.size(); ++i) {
-            if(mCrimes.get(i).getId().equals(crimeId)) {
+        UUID crimeId = (UUID) getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
+        for (int i = 0; i < mCrimes.size(); ++i) {
+            if (mCrimes.get(i).getId().equals(crimeId)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }
