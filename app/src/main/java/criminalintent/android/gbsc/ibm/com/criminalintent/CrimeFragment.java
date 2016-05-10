@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
@@ -59,12 +61,8 @@ public class CrimeFragment extends Fragment {
 
         getActivity().setTitle(R.string.crimes_title);
 
-        // added for home icon: actionBar is null
-//        getActivity().getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
-//        ActionBar actionBar = getActivity();
-//        actionBar.setLogo(R.mipmap.ic_launcher);
-//        actionBar.setDisplayUseLogoEnabled(true);
-//        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
         mTitleField.setText(mCrime.getTitle());
